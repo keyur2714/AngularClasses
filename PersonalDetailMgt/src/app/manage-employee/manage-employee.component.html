@@ -1,0 +1,32 @@
+<h3>Employee Names</h3>
+
+<ul *ngFor="let empName of empNameList">
+  <li>{{empName}}</li>
+</ul>
+<h3>Employee List</h3>
+<table class="table table-hover">
+  <tr>
+    <th>EmpId</th>
+    <th>Name</th>
+    <th>City</th>
+    <th>MobileNo</th>
+    <th>Department</th>
+  </tr>
+  <tr *ngFor="let emp of employees;let i=index" (click)="selectedEmployee(emp)">
+    <td>{{emp.empId}}</td>
+    <td>{{emp.name}}</td>
+    <td>{{emp.city}}</td>
+    <td>{{emp.mobileNo}}</td>
+    <td>{{emp.deptName}}</td>
+  </tr>
+</table>
+
+<h3>Selected Employee</h3>
+<ul>
+  <li>EmpId : {{selectedEmp.empId}}</li>
+  <li>Name : {{selectedEmp.name}}</li>
+  <li>City : {{selectedEmp.city}}</li>
+  <li>Mobile Number : {{selectedEmp.mobileNo}}</li>
+  <li>Department : {{selectedEmp.deptName}}</li>
+</ul>
+<button class="btn btn-primary" (click)="sayHello()">Click Me</button>
