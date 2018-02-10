@@ -1,7 +1,7 @@
 <h3>Employee Names</h3>
 
 <ul *ngFor="let empName of empNameList">
-  <li>{{empName}}</li>
+  <li ngClass="applyColor">{{empName}}</li>
 </ul>
 <h3>Employee List</h3>
 <table class="table table-hover">
@@ -22,11 +22,20 @@
 </table>
 
 <h3>Selected Employee</h3>
-<ul>
-  <li>EmpId : {{selectedEmp.empId}}</li>
-  <li>Name : {{selectedEmp.name}}</li>
-  <li>City : {{selectedEmp.city}}</li>
-  <li>Mobile Number : {{selectedEmp.mobileNo}}</li>
-  <li>Department : {{selectedEmp.deptName}}</li>
-</ul>
+<div *ngIf="selectedEmp.empId > 0;then thenBlock;else elseBlock">  
+</div>
+<ng-template #thenBlock>
+  <ul>
+    <li>EmpId : {{selectedEmp.empId}}</li>
+    <li>Name : {{selectedEmp.name}}</li>
+    <li>City : {{selectedEmp.city}}</li>
+    <li>Mobile Number : {{selectedEmp.mobileNo}}</li>
+    <li>Department : {{selectedEmp.deptName}}</li>
+  </ul>
+</ng-template>
+<ng-template #elseBlock>
+    <ul>
+      <li>No Record Selected from Grid</li>
+    </ul>
+</ng-template>
 <button class="btn btn-primary" (click)="sayHello()">Click Me</button>
