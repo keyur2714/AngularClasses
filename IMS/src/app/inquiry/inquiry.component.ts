@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
+import { Inquiry } from './inquiry';
 
 @Component({
   selector: 'app-inquiry',
@@ -7,14 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InquiryComponent implements OnInit {
 
-  name:string = "keyur";
-  mobileNo:string = "7387029671";
-  email:string="keyurjava27@gmail.com";
-  course:string="Angular";
+  //Old way
+  //inquiry = {name:"",mobileNo:"",email:"",course:""};
+  friendsName : string[] = ["keyur","denish","vinit"];
+  inquiryList : Inquiry[] = [];
+  inquiry : Inquiry = new Inquiry();
+
+  @ViewChild("name")
+  name:ElementRef;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  saveInquiry(name:string,mobileNo:string,email:string,course:string){
+    console.log("Hello:"+ name);
+    console.log(this.name.nativeElement.value);
+    this.inquiry.name = name;
+    this.inquiry.mobileNo = mobileNo;
+    this.inquiry.email = email;
+    this.inquiry.course = course;
+    this.inquiryList.push(this.inquiry);    
+    this.name.nativeElement.value = '';
+  }
+  addNewFriend(friendName){
+    console.log(friendName);
+    this.friendsName.push(friendName);
+  }
 }
