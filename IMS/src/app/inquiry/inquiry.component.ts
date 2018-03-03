@@ -12,10 +12,9 @@ export class InquiryComponent implements OnInit {
   //inquiry = {name:"",mobileNo:"",email:"",course:""};
   friendsName : string[] = ["keyur","denish","vinit"];
   inquiryList : Inquiry[] = [];
-  inquiry : Inquiry = new Inquiry();
+  inquiry : Inquiry;
 
-  @ViewChild("name")
-  name:ElementRef;
+  
 
   constructor() { }
 
@@ -24,13 +23,12 @@ export class InquiryComponent implements OnInit {
 
   saveInquiry(name:string,mobileNo:string,email:string,course:string){
     console.log("Hello:"+ name);
-    console.log(this.name.nativeElement.value);
+    this.inquiry = new Inquiry();
     this.inquiry.name = name;
     this.inquiry.mobileNo = mobileNo;
     this.inquiry.email = email;
     this.inquiry.course = course;
     this.inquiryList.push(this.inquiry);    
-    this.name.nativeElement.value = '';
   }
   addNewFriend(friendName){
     console.log(friendName);

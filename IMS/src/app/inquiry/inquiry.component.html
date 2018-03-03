@@ -26,23 +26,28 @@
     </tr>
     <tr>
         <td colspan="2">
-            <button class="btn btn-primary" type="button" (click)="saveInquiry(name.value,mobileNo.value,email.value,course.value)">Submit</button>
+            <button class="btn btn-primary" type="button" [disabled]="name.value === ''?false:true" (click)="saveInquiry(name.value,mobileNo.value,email.value,course.value)">Submit</button>
         </td>
     </tr>
 </table>
-
-<table class="table-hover">
+<table>
     <tr>
         <th>Name</th>
         <th>Mobile No</th>
         <th>Email</th>
         <th>Course</th>
     </tr>
-    <tr *ngFor="let inquir of inquiryList">
+    <tr *ngFor="let inquir of inquiryList;let i=index;" [ngClass]="i%2 == 0 ? 'evenRow' : 'oddRow'">        
         <td>{{inquir.name}}</td>
         <td>{{inquir.mobileNo}}</td>
-        <td>{{inquir.email}}</td>
-        <td>{{inquir.course}}</td>
-    </tr>
+        <td>{{inquir.email}}</td>        
+        <td *ngIf="inquir.course==='Angular';then ifBlock;else elseBlock"></td>         
+        <ng-template #ifBlock>
+            <td [ngClass]="'impCourse'">{{inquir.course}}</td>
+        </ng-template>
+        <ng-template #elseBlock>
+            <td>{{inquir.course}}</td>
+        </ng-template>
+    </tr>    
 </table>
 <app-message></app-message>
