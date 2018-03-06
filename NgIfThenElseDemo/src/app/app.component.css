@@ -1,0 +1,8 @@
+.validColor{
+    color: green;
+    font-size: 30px;
+}
+.inValidColor{
+    color: red;
+    font-size: 30px;
+}
