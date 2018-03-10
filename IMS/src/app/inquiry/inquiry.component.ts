@@ -8,11 +8,12 @@ import { Inquiry } from './inquiry';
 })
 export class InquiryComponent implements OnInit {
 
+  friendName:string = 'sachin';
   //Old way
   //inquiry = {name:"",mobileNo:"",email:"",course:""};
   friendsName : string[] = ["keyur","denish","vinit"];
   inquiryList : Inquiry[] = [];
-  inquiry : Inquiry;
+  inquiry : Inquiry = new Inquiry();
 
   
 
@@ -21,7 +22,7 @@ export class InquiryComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveInquiry(name:string,mobileNo:string,email:string,course:string){
+  /*saveInquiry(name:string,mobileNo:string,email:string,course:string){
     console.log("Hello:"+ name);
     this.inquiry = new Inquiry();
     this.inquiry.name = name;
@@ -29,9 +30,16 @@ export class InquiryComponent implements OnInit {
     this.inquiry.email = email;
     this.inquiry.course = course;
     this.inquiryList.push(this.inquiry);    
+  }*/
+  saveInquiry(){
+    this.inquiryList.push(this.inquiry);    
   }
-  addNewFriend(friendName){
+  /*addNewFriend(friendName){
     console.log(friendName);
     this.friendsName.push(friendName);
+  }*/
+  addNewFriend(){
+    console.log(this.friendName);
+    this.friendsName.push(this.friendName);
   }
 }

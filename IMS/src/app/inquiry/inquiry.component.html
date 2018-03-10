@@ -1,5 +1,8 @@
-<input type="text" #friendName />
-<button class="btn btn-info" (click)="addNewFriend(friendName.value)">Add New Friend</button>
+<!--<input type="text" #friendName /> -->
+<input type="text" name="fName" [ngModel]="friendName" />
+{{friendName}}
+<!--<button class="btn btn-info" (click)="addNewFriend(friendName.value)">Add New Friend</button>-->
+<button class="btn btn-info" (click)="addNewFriend()">Add New Friend</button>
 <ul *ngFor="let name of friendsName">
     <li>{{name}}</li>
 </ul>
@@ -10,23 +13,29 @@
 <table class="table" align=center>
     <tr>
         <td>Name:</td>
-        <td><input type=text #name /></td>
+        <!--<td><input type=text #name /></td>-->
+        <td><input type=text name="name" [(ngModel)]="inquiry.name" /></td>
+        {{inquiry.name}}
     </tr>
     <tr>
         <td>Mobile No:</td>
-        <td><input type=text #mobileNo /></td>
+        <!--<td><input type=text #mobileNo /></td>-->
+        <td><input type=text name="mobileNo" [(ngModel)]="inquiry.mobileNo" /></td>
     </tr>
     <tr>
         <td>Email:</td>
-        <td><input type=text #email /></td>
+        <!--<td><input type=text #email /></td>-->
+        <td><input type=text name="email" [(ngModel)]="inquiry.email" /></td>
     </tr>
     <tr>
         <td>Course:</td>
-        <td><input type=text #course /></td>
+        <!--<td><input type=text #course /></td>-->
+        <td><input type=text name="course" [(ngModel)]="inquiry.course" /></td>
     </tr>
     <tr>
         <td colspan="2">
-            <button class="btn btn-primary" type="button" [disabled]="name.value === ''?false:true" (click)="saveInquiry(name.value,mobileNo.value,email.value,course.value)">Submit</button>
+            <!--<button class="btn btn-primary" type="button" [disabled]="name.value === ''?false:true" (click)="saveInquiry(name.value,mobileNo.value,email.value,course.value)">Submit</button>-->
+            <button class="btn btn-primary" type="button" [disabled]="name.value === ''?false:true" (click)="saveInquiry()">Submit</button>
         </td>
     </tr>
 </table>

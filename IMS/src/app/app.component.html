@@ -1,3 +1,9 @@
-{{title}}
+<!-- {{title}}
 <br/>
-<app-inquiry></app-inquiry>
+<app-inquiry></app-inquiry> -->
+<app-book-detail *ngFor="let book of books"
+    [bookName]="book.name"
+    [author]="book.author"
+    [price]="book.price"
+>
+</app-book-detail>
