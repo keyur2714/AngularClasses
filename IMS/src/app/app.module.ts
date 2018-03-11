@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { InquiryComponent } from './inquiry/inquiry.component';
 import { MessageComponent } from './message.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { FriendsComponent } from './friends/friends.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InquiryComponent,
     MessageComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,

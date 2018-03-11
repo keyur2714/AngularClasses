@@ -24,9 +24,15 @@ export class AppComponent implements OnInit{
       "price":600
     }
   ];
+  age: number = 31;
+  friendsList:string[] = [];
   ngOnInit(){
     // this.book.name = 'Angular';
     // this.book.author = 'Alex';
     // this.book.price = 400;
+  }
+  getNewFriend(friendName){
+    console.log("2: "+friendName)
+    this.friendsList.push(friendName);
   }
 }

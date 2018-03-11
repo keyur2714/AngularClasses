@@ -1,9 +1,16 @@
 <!-- {{title}}
 <br/>
 <app-inquiry></app-inquiry> -->
-<app-book-detail *ngFor="let book of books"
+<!-- <app-book-detail *ngFor="let book of books"
     [bookName]="book.name"
     [author]="book.author"
     [price]="book.price"
 >
-</app-book-detail>
+</app-book-detail> -->
+<app-friends [age]="age" (getNewFriend)="getNewFriend($event)"></app-friends>
+<h3>List of Friends</h3>
+<div>
+    <div *ngFor="let friendName of friendsList">
+         {{friendName}}           
+    </div>
+</div>
