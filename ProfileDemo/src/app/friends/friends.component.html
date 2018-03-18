@@ -1,0 +1,6 @@
+<input type=text #name />
+<button type="button" (click)="addNewFriend(name.value)">Add New Friend</button>
+<ul *ngFor="let friendName of friendsList;let i=index;">
+    <li *ngIf="friendName === 'denish'">{{i}} {{friendName}} is My Best Friend</li>  
+    <li *ngIf="friendName !== 'denish'">{{i}} {{friendName}} is My Friend</li>  
+</ul>
