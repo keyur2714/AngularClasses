@@ -7,10 +7,22 @@
     [price]="book.price"
 >
 </app-book-detail> -->
-<app-friends [age]="age" (getNewFriend)="getNewFriend($event)"></app-friends>
+<!-- <app-friends [age]="age" (getNewFriend)="getNewFriend($event)"></app-friends>
 <h3>List of Friends</h3>
 <div>
     <div *ngFor="let friendName of friendsList">
          {{friendName}}           
     </div>
+</div> -->
+<div>
+<input type=number #num1 />
+<br />
+<input type=number #num2 />
+<br />
+<app-calculation>Result is::: </app-calculation>
+<br />
+<!-- <input type=button value="+" (click)="addition(num1.value,num2.value)" />
+<input type=button value="-" (click)="substraction(num1.value,num2.value)" /> -->
+<input type=button value="+" (click)="addition();" />
+<input type=button value="-" (click)="substraction();" />
 </div>

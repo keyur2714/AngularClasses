@@ -7,6 +7,7 @@ import { InquiryComponent } from './inquiry/inquiry.component';
 import { MessageComponent } from './message.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { FriendsComponent } from './friends/friends.component';
+import { CalculationComponent } from './calculation/calculation.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FriendsComponent } from './friends/friends.component';
     InquiryComponent,
     MessageComponent,
     BookDetailComponent,
-    FriendsComponent
+    FriendsComponent,
+    CalculationComponent
   ],
   imports: [
     BrowserModule,
