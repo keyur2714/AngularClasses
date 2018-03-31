@@ -3,15 +3,15 @@
       <tr>
         <td>Enter Name:<sup>*</sup></td>
         <td>
-          <input type=text name="name" ngModel required #name="ngModel" />          
+          <input type=text name="name" [(ngModel)]="newStudent.name" required #name="ngModel" />          
           <span *ngIf="name.touched && name.invalid">Name is Required Field</span>
         </td>
       </tr>
       <tr>
         <td>Enter email:<sup>*</sup></td>
         <td>
-          <input type=text name="email" ngModel required email #email="ngModel" />          {{isSubmitted}}
-          <div *ngIf="email.errors && email.touched && isSubmitted ">
+          <input type=text name="email" [(ngModel)]="newStudent.email" required email #email="ngModel" />          
+          <div *ngIf="email.errors && email.touched ">
             <span *ngIf="email.errors['required']">Email is Required Field</span>
             <span *ngIf="email.errors['email']">Email is InValid</span>
           </div>
@@ -20,26 +20,58 @@
       <tr>
         <td>Enter MobileNo:<sup>*</sup></td>
         <td>
-          <input type=text name="mobileNo" ngModel required />          
+          <input type=text name="mobileNo" [(ngModel)]="newStudent.mobileNo" required #mobileNo="ngModel" />          
+          <span *ngIf="mobileNo.touched && mobileNo.invalid">Mobile Number is Required Field</span>
         </td>
       </tr>
       <tr>
         <td>Enter Course:<sup>*</sup></td>
         <td>
-          <input type=text name="course" ngModel required />          
+          <input type=text name="course" [(ngModel)]="newStudent.course" required #course="ngModel" />          
+          <span *ngIf="course.touched && course.invalid">Course is Required Field</span>
         </td>
       </tr>
       <tr>
         <td>Enter Fees:<sup>*</sup></td>
         <td>
-          <input type=text name="fees" ngModel required />          
+          <input type=text name="fees" [(ngModel)]="newStudent.fees" required #fees="ngModel" />          
+          <span *ngIf="fees.touched && fees.invalid">Fees is Required Field</span>
         </td>
       </tr>
       <tr>
         <td>
-          <button type="submit">Submit</button>
+          <button type="submit" [disabled]="f.invalid">Submit</button>
         </td>
       </tr>
     </form>
   </table>
-{{name.value}}
+<div *ngIf="isSubmitted">  
+    Name: {{newStudent.name}} <br />
+    Email: {{newStudent.email}} <br />
+    Course: {{newStudent.course}} <br />
+    MobileNo: {{newStudent.mobileNo}} <br />
+    Fees: {{newStudent.fees}} <br />
+</div>
+<app-datagrid
+  [headerColumns]="headerColumnList"
+  [displayColumns]="displayColumnList"
+  [dataList]="studentList"
+>
+
+</app-datagrid>
+<!-- <table class="table table-stripped">
+  <tr>
+    <th>Name</th>
+    <th>course</th>
+    <th>Email</th>
+    <th>MobileNo</th>
+    <th>Fees</th>
+  </tr>
+  <tr *ngFor="let student of studentList">
+    <td>{{student.name}}</td>
+    <td>{{student.course}}</td>
+    <td>{{student.email}}</td>
+    <td>{{student.mobileNo}}</td>
+    <td>{{student.fees}}</td>
+  </tr>
+</table> -->

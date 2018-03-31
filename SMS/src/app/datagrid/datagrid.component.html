@@ -1,0 +1,12 @@
+<table class="table table-stripped">
+  <tr>
+    <th *ngFor="let column of headerColumns">
+      {{column}}
+    </th>    
+  </tr>
+  <tr *ngFor="let data of dataList">
+    <td *ngFor="let column of displayColumns">
+       {{data[column]}}
+    </td>
+  </tr>
+</table>
