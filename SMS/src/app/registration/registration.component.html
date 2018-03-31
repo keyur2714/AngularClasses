@@ -1,0 +1,45 @@
+<table>
+    <form #f="ngForm" (ngSubmit)="onSubmitForm()">
+      <tr>
+        <td>Enter Name:<sup>*</sup></td>
+        <td>
+          <input type=text name="name" ngModel required #name="ngModel" />          
+          <span *ngIf="name.touched && name.invalid">Name is Required Field</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Enter email:<sup>*</sup></td>
+        <td>
+          <input type=text name="email" ngModel required email #email="ngModel" />          {{isSubmitted}}
+          <div *ngIf="email.errors && email.touched && isSubmitted ">
+            <span *ngIf="email.errors['required']">Email is Required Field</span>
+            <span *ngIf="email.errors['email']">Email is InValid</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Enter MobileNo:<sup>*</sup></td>
+        <td>
+          <input type=text name="mobileNo" ngModel required />          
+        </td>
+      </tr>
+      <tr>
+        <td>Enter Course:<sup>*</sup></td>
+        <td>
+          <input type=text name="course" ngModel required />          
+        </td>
+      </tr>
+      <tr>
+        <td>Enter Fees:<sup>*</sup></td>
+        <td>
+          <input type=text name="fees" ngModel required />          
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit">Submit</button>
+        </td>
+      </tr>
+    </form>
+  </table>
+{{name.value}}
