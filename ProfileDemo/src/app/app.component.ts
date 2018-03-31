@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title:string = 'denish';
+
+  
+  isPalindrom : boolean = false;
+
+  getReverseString(str){
+    console.log(2);
+    if(str[0] === str[1])
+      this.isPalindrom = true;
+  }
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit {
-
+  testStr:string = "ddd";
   friendsList:string[] = ["keyur","denish","vinit"];
   constructor() {
     console.log("Hi...");
@@ -19,6 +19,6 @@ export class FriendsComponent implements OnInit {
 
   addNewFriend(name:string):void{
     this.friendsList.push(name);
-    this.friendsList.splice(3,1);
+    //this.friendsList.splice(3,1);
   }
 }

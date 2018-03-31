@@ -1,8 +1,19 @@
-Hello Radhe Krishna...!{{title}}
-<br />
-<app-friends></app-friends>
-<br />
-<app-manage-students></app-manage-students>
+ <!-- Hello Radhe Krishna...!{{title}}
+<br /> -->
+<!-- <app-friends></app-friends> -->
+<!--<app-calculator></app-calculator>
+<br />-->
+<!--<app-manage-students></app-manage-students> -->
 <!--<app-message></app-message> 
 <app-message></app-message> 
 <app-success-message></app-success-message> -->
+
+<!-- <app-registration></app-registration> -->
+<app-revstr (revStringEvent)="getReverseString($event)">
+</app-revstr>
+<h2 *ngIf="isPalindrom">
+    String is Palindrom
+</h2>
+<h2 *ngIf="!isPalindrom">
+    String is Not Palindrom
+</h2>
