@@ -1,0 +1,66 @@
+
+
+<p>
+  &nbsp;
+</p>
+<p *ngIf="isSubmitted==true">
+  <app-success-message [msg]="myMessage"></app-success-message>
+</p>
+<table>
+  <tr>
+    <td>Name :</td>
+    <td><input type=text name="name" [(ngModel)]="student.name"/></td>
+  </tr>
+  <tr>
+    <td>Mobile No :</td>
+    <td><input type=text name="mobileNo" [(ngModel)]="student.mobileNo"/></td>
+  </tr>
+  <tr>
+    <td>Course :</td>
+    <td><input type=text name="course" [(ngModel)]="student.course"/></td>
+  </tr>
+  <tr>
+    <td>Fees :</td>
+    <td><input type=text name=fees [(ngModel)]="student.fees"/></td>
+  </tr>
+  <tr>
+    <td>Email :</td>
+    <td><input type=text name=email [(ngModel)]="student.email" /></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button (click)="save()">Register</button>
+    </td>
+  </tr>
+</table>
+<div *ngIf="isSubmitted == true">
+  Name: {{student.name}} <br />
+  MobileNo: {{student.mobileNo}} <br />
+  Email: {{student.email}} <br />
+  Fees: {{student.fees}} <br />
+  Course: {{student.course}} <br />
+</div>
+<app-mydatagrid [columnList]="displayColumns" [dataList]="studentList">
+</app-mydatagrid>
+
+<app-success-message *ngFor="let m of messageList;let i=index" [msg]="m" [color]="'red'">
+  Message [{{i+1}}] :
+</app-success-message>
+
+
+<!-- <table>
+  <tr>
+    <th>Name</th>
+    <th>Mobile No</th>
+    <th>Course</th>
+    <th>Fees</th>
+    <th>Email</th>
+  </tr>
+  <tr *ngFor="let s of studentList;let i=index">
+    <td>{{s.name}} - {{i}}</td>
+    <td>{{s.mobileNo}}</td>
+    <td>{{s.course}}</td>
+    <td>{{s.fees}}</td>
+    <td>{{s.email}}</td>
+  </tr>
+</table> -->
