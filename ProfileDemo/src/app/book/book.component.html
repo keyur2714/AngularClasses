@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <td>BookId:</td>
+    <td><input type=number name=bookId [(ngModel)]="newBook.bookId" /></td>
+  </tr>
+  <tr>
+    <td>Book Name:</td>
+    <td><input type=text name=bookName [(ngModel)]="newBook.bookName" /></td>
+  </tr>
+  <tr>
+    <td>Book Price:</td>
+    <td><input type=number name=price [(ngModel)]="newBook.price" /></td>
+  </tr>
+  <tr>
+    <td>Book Author:</td>
+    <td><input type=text name=author [(ngModel)]="newBook.author" /></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button (click)="addBook()">Add Book</button>
+    </td>
+  </tr>
+</table>

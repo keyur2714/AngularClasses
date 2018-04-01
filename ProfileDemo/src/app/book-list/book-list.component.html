@@ -1,0 +1,9 @@
+<app-book (addBook)="addBook($event)"></app-book>
+<app-mydatagrid [columnList]="bookDisplayColumnList" [dataList]="bookList">
+</app-mydatagrid>
+<!-- <ul *ngFor="let book of bookList">
+  <li>{{book.bookId}}</li>
+  <li>{{book.bookName}}</li>
+  <li>{{book.price}}</li>
+  <li>{{book.author}}</li>
+</ul> -->

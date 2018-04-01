@@ -11,6 +11,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MydatagridComponent } from './mydatagrid/mydatagrid.component';
 import { RevstrComponent } from './revstr/revstr.component';
+import { BookComponent } from './book/book.component';
+import { BookListComponent } from './book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { RevstrComponent } from './revstr/revstr.component';
     CalculatorComponent,
     RegistrationComponent,
     MydatagridComponent,
-    RevstrComponent
+    RevstrComponent,
+    BookComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule   
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [BookListComponent]
 })
 export class AppModule { }
