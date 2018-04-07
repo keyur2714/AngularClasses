@@ -1,0 +1,13 @@
+<h1>@ViewChild Demo</h1>
+<input type=text #number1 />
+<input type=text #number2 />
+<button type="button" (click)="increase()">ADD</button>
+<button type="button" (click)="decrease()">SUB</button>
+<app-number [number1]="number1.value" >
+  Sum Result Is :   
+</app-number>
+Stopwatch Example: 
+<button type="button" (click)="startStopwatch()">Start</button>
+<button type="button" (click)="stopStopwatch()">Stop</button>
+<br/>
+<app-stopwatch>Counter Value Is: </app-stopwatch> 

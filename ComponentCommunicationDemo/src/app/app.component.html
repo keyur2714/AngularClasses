@@ -1,0 +1,21 @@
+Demo of {{title}}
+<br />
+<!-- <app-server (addNewServerEvent)="addNewServer($event)">test {{serverHeader}}</app-server> -->
+<!-- <app-server (addNewServerEvent)="addNewServer($event)">Server Detail 1</app-server> -->
+<!-- <table border="1">
+    <tr>
+      <th>Server Name</th>
+      <th>Server Os</th>
+    </tr>
+    <tr *ngFor="let server of serverList">
+       <td>{{server.serverName}}</td>
+       <td>{{server.serverOs}}</td> 
+    </tr>
+</table> -->
+Server Name: <input type="text" #serverName /> <br/>
+Server Os: <input type="text" #serverOs /> <br/>
+<!--<button type="button" (click)="addServer(serverName.value,serverOs.value)">Add New Server</button> -->
+<button type="button" (click)="addServer()">Add New Server</button>
+
+<app-parent-server [serverList]="serverList">
+</app-parent-server>

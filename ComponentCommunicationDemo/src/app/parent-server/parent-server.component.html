@@ -1,0 +1,13 @@
+<p>
+  List Of Servers
+</p>
+<table border="1">
+    <tr>
+      <th>Server Name</th>
+      <th>Server Os</th>
+    </tr>
+    <tr *ngFor="let server of serverList">
+       <td>{{server.serverName}}</td>
+       <td>{{server.serverOs}}</td> 
+    </tr>
+</table>

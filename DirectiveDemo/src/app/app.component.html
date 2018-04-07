@@ -1,0 +1,31 @@
+<body>
+<img src="<span class=""></span>./assets/images/Penguins.jpg" width="100px;">
+
+<h1>
+  Tow Way Binding
+</h1>
+<input type=text [(ngModel)]="str" />
+
+{{str}}
+
+<h1>Directives Demo</h1>
+<div customColor [textSize]="txtsize">
+  Hello Radhe Krishna...
+</div>
+<div>
+  Change Color:
+  <input type="radio" name="rad" (click)= "changeColor('green')"> Green
+  <input type="radio" name="rad" (click)= "changeColor('cyan')"> Cyan
+  <input type="radio" name="rad" (click)= "changeColor('blue')"> Blue
+</div> 
+<div>
+  Select Text Size:
+  txtSizes
+  <select [(ngModel)] ="txtsize" (change)= "changeColor('green')">
+    <option value='' selected> Select Size </option>
+    <option *ngFor = "let tSize of txtSizes" [value] = "tSize">
+		    {{tSize}}
+    </option>
+  </select>
+</div>
+</body>
