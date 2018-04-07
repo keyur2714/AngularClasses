@@ -1,5 +1,14 @@
 <table>
+    <span *ngIf="statusCode == 201">Student Details Saved Successfully</span>    
+    <span *ngIf="statusCode == 200">Student Details Updated Successfully</span>    
     <form #f="ngForm" (ngSubmit)="onSubmitForm()">
+      <tr>
+        <td>Enter Student Id:<sup>*</sup></td>
+        <td>
+          <input type=number name="id" [(ngModel)]="newStudent.id" required #id="ngModel" />          
+          <span *ngIf="id.touched && id.invalid">Id is Required Field</span>
+        </td>
+      </tr>
       <tr>
         <td>Enter Name:<sup>*</sup></td>
         <td>
@@ -40,7 +49,12 @@
       </tr>
       <tr>
         <td>
-          <button type="submit" [disabled]="f.invalid">Submit</button>
+          <p *ngIf="isUpdate">
+            <button type="button" [disabled]="f.invalid" (click)="update()">Update</button>
+          </p>
+          <p *ngIf="isUpdate == false">
+            <button type="submit" [disabled]="f.invalid">Submit</button>
+          </p>
         </td>
       </tr>
     </form>
@@ -52,20 +66,21 @@
     MobileNo: {{newStudent.mobileNo}} <br />
     Fees: {{newStudent.fees}} <br />
 </div>
-<app-datagrid
+<!-- <app-datagrid
   [headerColumns]="headerColumnList"
   [displayColumns]="displayColumnList"
   [dataList]="studentList"
->
+> 
 
-</app-datagrid>
-<!-- <table class="table table-stripped">
+</app-datagrid>-->
+<table class="table table-stripped">
   <tr>
     <th>Name</th>
     <th>course</th>
     <th>Email</th>
     <th>MobileNo</th>
     <th>Fees</th>
+    <th>Action</th>
   </tr>
   <tr *ngFor="let student of studentList">
     <td>{{student.name}}</td>
@@ -73,5 +88,7 @@
     <td>{{student.email}}</td>
     <td>{{student.mobileNo}}</td>
     <td>{{student.fees}}</td>
+    <td><button (click)="edit(student.id)">Edit</button></td>
+    <td><button (click)="delete(student.id)">Delete</button></td>
   </tr>
-</table> -->
+</table>

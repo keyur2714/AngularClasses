@@ -15,6 +15,9 @@ export class RegistrationComponent implements OnInit {
    @ViewChild("f")
    f:NgForm;
 
+   statusCode:number;
+   isUpdate:boolean = false;
+
    newStudent: Student = new Student();
 
    headerColumnList : string[]=["Name","Fees","Course"];
@@ -26,6 +29,10 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {  
     //this.registrationService.getStudentList();
+    this.getAllStudentList();  
+  }
+
+  getAllStudentList(){
     this.registrationService.getStudentList().subscribe(
       (data) =>{
         console.log(data.json());
@@ -41,6 +48,43 @@ export class RegistrationComponent implements OnInit {
     this.loggingService.log(this.f.controls["name"].invalid+'');
     this.isSubmitted = true;
     this.loggingService.log("Student Data:: "+this.newStudent.name+" "+this.newStudent.course);
-    //this.registrationService.register(this.newStudent);
+    this.registrationService.register(this.newStudent).subscribe(
+      (data) => {
+        console.log(data.status);
+        this.statusCode = data.status;
+        this.getAllStudentList();
+      }
+    );
+      
+  }
+
+  update(){
+    this.registrationService.update(this.newStudent).subscribe(
+      (data) => {
+        console.log(data.status);
+        this.statusCode = data.status;
+        this.getAllStudentList();
+      }
+    );
+  }
+
+  edit(id:number){
+    this.isUpdate = true;
+    this.loggingService.log(id+"");
+    this.registrationService.get(id).subscribe(
+      (data) => {
+        this.newStudent = data.json();
+      }
+    );
+  }
+
+  delete(id:number){
+    this.registrationService.delete(id).subscribe(
+      (data) => {
+         console.log(data);
+         this.statusCode = data.status;   
+         this.getAllStudentList();
+      }
+    );
   }
 }

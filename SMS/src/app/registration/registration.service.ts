@@ -30,6 +30,21 @@ export class RegistrationService{
         return this.http.get(this.registrationUrl);
     }
 
+    register(student:Student):Observable<Response>{
+        return this.http.post(this.registrationUrl,student);
+    }
+
+    update(student:Student):Observable<Response>{
+        return this.http.put(this.registrationUrl+"/"+student.id,student);
+    }
+
+    get(id:number):Observable<Response>{
+        return this.http.get(this.registrationUrl+"/"+id);
+    }
+
+    delete(id:number):Observable<Response>{
+        return this.http.delete(this.registrationUrl+"/"+id);
+    }
     // register(student:Student):void{
     //     this.studentList.push(student);
     // }
