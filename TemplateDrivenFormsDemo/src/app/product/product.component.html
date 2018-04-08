@@ -1,0 +1,31 @@
+<table>
+    <form #p="ngForm" (ngSubmit)="saveProduct()">
+      <tr>
+        <td>Product Name:<sup>*</sup></td>
+        <td>
+          <input type=text name="name" #name="ngModel" [(ngModel)]="newProduct.productName" required />                    
+          <span *ngIf="name.invalid && name.touched">
+            Product Name is Required Field          
+          </span>
+        </td>
+      </tr>      
+      <tr>
+        <td>Product Price:<sup>*</sup></td>
+        <td>
+          <input type=number name="price" #price="ngModel" [(ngModel)]="newProduct.productPrice" required />                    
+          <span *ngIf="price.invalid && price.touched">
+            Product Price is Required Field          
+          </span>
+        </td>
+      </tr>      
+      <tr>
+        <td>
+          <button type="submit" [disabled]="p.invalid">Submit</button>
+        </td>
+      </tr>
+    </form>
+</table>
+<div *ngIf="isSubmitted">
+  Product Name: {{newProduct.productName}} <br/>
+  Product Price: {{newProduct.productPrice}}
+</div>
