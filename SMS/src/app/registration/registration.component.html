@@ -1,6 +1,8 @@
 <table>
-    <span *ngIf="statusCode == 201">Student Details Saved Successfully</span>    
-    <span *ngIf="statusCode == 200">Student Details Updated Successfully</span>    
+    <span *ngIf="statusCode == 201" [ngClass] = "'success'">Student Details Saved Successfully</span>    
+    <span *ngIf="statusCode == 200" [ngClass] = "'success'">Student Details Updated Successfully</span>    
+    <span *ngIf="statusCode === 204" [ngClass] = "'success'">Student deleted successfully.</span>   	   
+    <span *ngIf="statusCode === 404" [ngClass] = "'failure'">Invalid Request Url.</span>   	   
     <form #f="ngForm" (ngSubmit)="onSubmitForm()">
       <tr>
         <td>Enter Student Id:<sup>*</sup></td>

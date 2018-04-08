@@ -7,3 +7,9 @@ sup{
 span{
     color: red;
 }
+.success{
+    color: green;        
+}
+.failure{
+    color: red;        
+}

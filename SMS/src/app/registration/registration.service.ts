@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Student } from './student.model';
-import { Http,Response } from '@angular/http';
-import { Observable } from "rxjs/Observable"
+import { Http,Response,RequestOptions,Headers } from '@angular/http';
+import { Observable } from "rxjs";
+
 @Injectable()
 export class RegistrationService{
 
@@ -26,27 +27,51 @@ export class RegistrationService{
     //     }
     // ];
 
-    getStudentList():Observable<Response>{
-        return this.http.get(this.registrationUrl);
+    getStudentList():Observable<Student[]>{
+        return this.http.get(this.registrationUrl)
+        .map(this.extractData)
+        .catch(this.handleError);
     }
 
-    register(student:Student):Observable<Response>{
-        return this.http.post(this.registrationUrl,student);
+    register(student:Student):Observable<number>{
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.http.post(this.registrationUrl,student,options)
+        .map(data => data.status)
+        .catch(this.handleError);
     }
 
-    update(student:Student):Observable<Response>{
-        return this.http.put(this.registrationUrl+"/"+student.id,student);
+    update(student:Student):Observable<number>{
+        return this.http.put(this.registrationUrl+"/"+student.id,student)
+        .map(data=> data.status)
+        .catch(this.handleError);
     }
 
-    get(id:number):Observable<Response>{
-        return this.http.get(this.registrationUrl+"/"+id);
+    get(id:number):Observable<Student>{
+        return this.http.get(this.registrationUrl+"/"+id)
+        .map(this.extractData)
+        .catch(this.handleError);
     }
 
-    delete(id:number):Observable<Response>{
-        return this.http.delete(this.registrationUrl+"/"+id);
+    delete(id:number):Observable<number>{
+        return this.http.delete(this.registrationUrl+"/"+id)
+        .map(data=>data.status)
+        .catch(this.handleError);
     }
     // register(student:Student):void{
     //     this.studentList.push(student);
     // }
+
+    extractData(data:Response){
+        let students: Student[] = data.json();
+        for(let s of students){
+            s.name = s.name.toUpperCase() ;
+        }
+        return students;
+    }
+
+    handleError(errorResponse:Response){
+        return Observable.throw(errorResponse.status);
+    }
 
 }
