@@ -30,11 +30,24 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {  
     //this.registrationService.getStudentList();
-    this.getAllStudentList();  
+    //this.getAllStudentList();  
+    this.getStudentListWithHttpClient();
   }
 
   getAllStudentList(){
     this.registrationService.getStudentList().subscribe(
+      (data) =>{
+        console.log(data);
+        this.studentList = data;
+      },
+      (error) =>{
+        this.statusCode = error;
+      }      
+    )
+  }
+
+  getStudentListWithHttpClient(){
+    this.registrationService.getStudentListWithHttpClient().subscribe(
       (data) =>{
         console.log(data);
         this.studentList = data;

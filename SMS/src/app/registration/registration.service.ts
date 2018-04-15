@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Student } from './student.model';
 import { Http,Response,RequestOptions,Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 
 @Injectable()
@@ -8,7 +9,7 @@ export class RegistrationService{
 
     registrationUrl : string = "http://localhost:3000/studentDetails";
 
-    constructor(private http:Http){}
+    constructor(private http:Http,private httpClient:HttpClient){}
 
     // studentList: Student[] = [
     //     {
@@ -31,6 +32,10 @@ export class RegistrationService{
         return this.http.get(this.registrationUrl)
         .map(this.extractData)
         .catch(this.handleError);
+    }
+
+    getStudentListWithHttpClient():Observable<Student[]>{
+        return this.httpClient.get<Student[]>(this.registrationUrl);        
     }
 
     register(student:Student):Observable<number>{
