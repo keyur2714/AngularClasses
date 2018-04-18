@@ -1,0 +1,55 @@
+<span *ngIf="statusCode == 201">
+  Book Created Successfully.
+</span>
+<span *ngIf="statusCode == 200">
+  Book Updated Successfully.
+</span>
+<span *ngIf="statusCode == 204">
+  Book Deleted Successfully.
+</span>
+<form #f="ngForm" (ngSubmit)="saveBookWithHttpClient()">
+  <table>
+    <tr>
+      <td>Book Id:</td>
+      <td><input type="number" name="id" [(ngModel)]="newBook.id" ngModel /></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" name="name" [(ngModel)]="newBook.name" ngModel /></td>
+    </tr>
+    <tr>
+      <td>Author:</td>
+      <td><input type="text" name="author" [(ngModel)]="newBook.author" ngModel /></td>
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td><input type="text" name="price" [(ngModel)]="newBook.price" ngModel /></td>
+    </tr>
+    <tr *ngIf="isUpdate">    
+      <td colspan="2"><button type="button" name="update" (click)="update()">Update</button></td>      
+    </tr>
+    <tr *ngIf="isUpdate == false">
+      <td colspan="2"><button type="submit" name="action">Submit</button></td>
+    </tr>
+  </table>
+</form>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let book of bookList">
+    <td>{{book.id}}</td>
+    <td>{{book.name}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.price}}</td>
+    <td>
+      <button (click)="edit(book.id)">Edit</button>
+      <button (click)="delete(book.id)">Delete</button>
+    </td>
+  </tr>
+</table>
