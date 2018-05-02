@@ -1,0 +1,53 @@
+<p *ngIf="bookForm.invalid">
+  Form Data is Invalid
+</p>
+<form [formGroup]="bookForm" (ngSubmit)="saveBook()">
+  <table>
+    <tr>
+      <td>Book Id</td>
+      <td>
+        <input type=number formControlName="bookId" [(ngModel)]="book.bookId" />
+        <span *ngIf="bookForm.get('bookId').invalid">Book Id is Required</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Book Name</td>
+      <td>
+        <input type=text formControlName="bookName" [(ngModel)]="book.bookName" />
+        <div *ngIf="bookForm.get('bookName').errors">
+          <span *ngIf="bookForm.get('bookName').errors['required']">Book Name is Required</span>
+          <span *ngIf="bookForm.get('bookName').errors['maxlength']">Book Name is Too Long.max no character is 20</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Author</td>
+      <td>
+        <input type=text formControlName="author" [(ngModel)]="book.author" />
+        <div *ngIf="bookForm.get('author').errors">
+          <span *ngIf="bookForm.get('author').errors['required']">Author is Required</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td>
+        <input type=number formControlName="price" [(ngModel)]="book.price" />
+        <div *ngIf="bookForm.get('price').errors">
+          <span *ngIf="bookForm.get('price').errors['required']">Price is Required</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="SAVE" [disabled]="bookForm.invalid"/></td>
+      <td><input type="button" value="RESET" /></td>
+    </tr>
+  </table>
+</form>
+
+<div *ngIf="bookForm.valid && isSubmitted">
+  Book Id:    {{book.bookId}} <br/>
+  Book Name:  {{book.bookName}} <br/>
+  Author:     {{book.author}} <br/>
+  Price:      {{book.price}} <br/>
+</div>

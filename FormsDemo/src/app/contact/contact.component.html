@@ -1,0 +1,37 @@
+<table>
+    <form #f="ngForm" (ngSubmit)="saveContact()">
+      <tr>
+        <td>Enter Name:<sup>*</sup></td>
+        <td>
+          <input type=text #name="ngModel" [ngModel]="contact.name" name="name" required />          
+          <span *ngIf="name.touched && name.valid == false">
+            Name is Mandetory
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Enter Mobile No:<sup>*</sup></td>
+        <td><input type=text #mobileNo="ngModel" [(ngModel)]="contact.mobileNo" name="mobileNo" required/>  
+        </td>
+      </tr>
+      <tr>
+        <td>Email:<sup>*</sup></td>
+        <td><input type=text #email="ngModel" [(ngModel)]="contact.email" name="email" required email /></td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" [hidden]="f.invalid">Submit</button>
+        </td>
+      </tr>
+    </form>
+</table>
+<div *ngIf="f.valid">
+  Name: {{name.value}} <br/>
+  Mobile No: {{mobileNo.value}} <br/>
+  Email: {{email.value}} <br />
+  <h2>From Object</h2>
+  {{contact.name}} <br/>
+  {{contact.mobileNo}} <br />
+  {{contact.email}} 
+
+</div>

@@ -1,0 +1,44 @@
+<html>
+  <p *ngIf="frm.invalid && frm.touched && isSubmitted">
+    Please Fill Required Fields
+  </p>
+  <form #frm="ngForm" (ngSubmit)="saveProduct()">
+  <table>
+    <tr>
+      <td align=right>Product Code:<sup>*</sup></td>
+      <td>
+        <input type=text name="productCode" [(ngModel)]="newProduct.code" #productCode=ngModel required minlength="3" />
+        <p *ngIf="productCode.errors">
+          <span *ngIf="productCode.errors['required'] && productCode.touched">Product Code is Required.</span>  
+          <span *ngIf="productCode.errors['minlength'] && productCode.touched">Product Code is min 3 Character.</span>  
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>Product Name:<sup>*</sup></td>
+      <td><input type=text name="productName" [(ngModel)]="newProduct.name" #productName=ngModel required/></td>
+    </tr>
+    <tr>
+      <td align=right>Product Description:</td>
+      <td><input type=text name="productDescrition" [(ngModel)]="newProduct.description" #productDescription=ngModel /></td>
+    </tr>
+    <tr>
+      <td align=right>Unit Price:<sup>*</sup></td>
+      <td><input type=text name="unitPrice" [(ngModel)]="newProduct.unitPrice" #unitPrice=ngModel required/></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button type="submit" >Save</button>
+        <button type="button" [disabled]="frm.untouched">Reset</button>
+      </td>
+    </tr>
+  </table>
+  </form>
+</html>
+<h3>Product data</h3>
+<div *ngIf="frm.valid && isSubmitted">
+  Product Code: {{newProduct.code}} <br />
+  Product Name: {{newProduct.name}} <br />
+  Product Description: {{newProduct.description}} <br />
+  Product Unit Price: {{newProduct.unitPrice}} <br />
+</div>
