@@ -1,0 +1,41 @@
+
+{{title}}
+<!-- <button (click)="toggleState()">Toggle State</button>
+
+  <table border=5 [@onOffTrigger] = "state" align="center">
+      <tr>
+        <th>Names</th>
+      </tr>
+      <tr>
+        <td>Keyur</td>
+      </tr>
+  </table>
+  <p>&nbsp;</p>  
+  <table border=5 align="center">
+      <tr>
+        <th>Names</th>
+      </tr>
+      <tr *ngFor="let name of friendsName" [@onOff2Trigger] = "rowstate" (click)="toggleRowState()">
+        <td>{{name}}</td>
+      </tr>
+  </table> -->
+<BR/>    
+  <button (click)="changeState()">Toggle Animation</button>
+  <div [@stateTrigger]="newState" style="width:100px; height:100px;">
+  </div>
+<br/>
+<br/>
+  <button (click)="toggleState()">Toggle Animation</button>
+  <div [@onOff2Trigger]="state" style="width:100px; height:100px;">
+  </div>
+
+  <br/>
+
+  <table border=5 align="center">
+      <tr>
+        <th>Names</th>
+      </tr>
+      <tr *ngFor="let name of friendsName" [@onOff2Trigger] = "rowstate" (click)="toggleRowState()">
+        <td>{{name}}</td>
+      </tr>
+  </table>
