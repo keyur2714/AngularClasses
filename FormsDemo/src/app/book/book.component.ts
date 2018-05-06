@@ -27,6 +27,7 @@ export class BookComponent implements OnInit {
   constructor(private bookService : BookService,private looggerService:LoggerService) { }
 
   ngOnInit() {
+    this.book.bookId = 3;
     this.book.bookName = "Angular";
   }
 

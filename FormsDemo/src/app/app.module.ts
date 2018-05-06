@@ -8,12 +8,14 @@ import { BookComponent } from './book/book.component';
 
 import { LoggerService } from './logging.service';
 import { ContactComponent } from './contact/contact.component';
+import { TeamComponent } from './team/team.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     BookComponent,
-    ContactComponent
+    ContactComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
